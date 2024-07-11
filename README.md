@@ -12,13 +12,13 @@ Learning curves are produces using:
 - LearningCurvesComplNP.py (learning curve for a language with complex NPs)
 
 Grammar snapshots are produced using:
-- GrammarSnapshots.py producing 4 Excel files: QLearnerC_paper.xlsx, QLearnerN_paper.xlsx, RWQLearnerC_paper.xlsx, and RWQLearnerN_paper.xlsx
-- GrammarSnapshotsMD.py producing RWQLearnerC_MD_paper.xlsx
-- grammarSnapshots-rel.py producing RWQLearnerC_rel.xlsx
+- GrammarSnapshots.py producing 4 Excel files: QLearnerC2_revisedFinal.xlsx, QLearnerN2_revisedFinal.xlsx, RWQLearnerC2_revisedFinal.xlsx, and RWQLearnerN2_revisedFinal.xlsx
+- GrammarSnapshotsMD.py producing RWQLearnerC_MD_revisedFinal.xlsx
+- grammarSnapshots-rel.py producing RWQLearnerC_rel_revisedFinal.xlsx
 - grammarSnapshotsComplNP.py producing RWQLearnerC_MDComplNP.xlsx
 
 Sentences extracted for the langauge with relative clauses are stored in the sentencesRelClauses.xlsx and sentencesRelClauses1.xlsx
 
 Sentences extracted for the Complex NP language are stored in the sentencesCompNP_paper.xlsx
 
-Other files are not relevant for the paper.
+Other files are not relevant for the paper and were generated in earlier phases of development.

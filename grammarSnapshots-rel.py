@@ -61,7 +61,7 @@ Learner.ID = 0
 Learner.alpha = 0.1
 Learner.beta = 1.0
 Learner.positive_reinforcement = 25.
-Learner.negative_reinforcement = -10.
+Learner.negative_reinforcement = -2.
 
 RWLearner.initial_value_border = 1.
 RWLearner.initial_value_chunking = -1.
@@ -69,7 +69,7 @@ RWLearner.initial_value_chunking = -1.
 RWLearner.alpha = 0.1
 RWLearner.beta = 1.0
 RWLearner.positive_reinforcement = 25.
-RWLearner.negative_reinforcement = -10.
+RWLearner.negative_reinforcement = -2.
 
 
 ###############################################################
@@ -153,7 +153,8 @@ cfgYPredMD = ProbabilisticGrammar(terminalsYP, non_terminalsYP, production_rules
 #############################################################
 
 
-n_trials = 80002
+n_trials = 50002
+n_sent = 200
 
 #############################################################
 #
@@ -164,7 +165,7 @@ print('Creating the stimuli stream')
 
 # Create stimuli stream
 stimuli_stream = Raw_input(10*n_trials,cfgYPredMD)
-
+test_stimuli_stream = Raw_input(2*n_sent,cfgYPredMD)
 #############################################################
 #
 #   Learning snapshots
@@ -172,12 +173,12 @@ stimuli_stream = Raw_input(10*n_trials,cfgYPredMD)
 #############################################################
 
 print('Running the model')
-snaptid =[400,500,600,700,800,1000,2000,3000,5000,6000,9000,15000,30000,50000]
+snaptid =[400,1000,7000,9000,11000,15000,50000]
 
 
 print('RW Q-learning, continuous')
 learner = RWLearner(n_trials = n_trials, border = 'cont')
-learner.learn_with_snapshot(stimuli_stream, 'RWQLearnerC_rel.xlsx', snaptid, 2)
+learner.learn_with_snapshot(stimuli_stream,test_stimuli_stream,n_sent, 'RWQLearnerC_rel.xlsx', snaptid, 4)
 write_sent_dict_to_file(learner)
 
 end_time = datetime.now()

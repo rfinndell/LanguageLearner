@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Feb  2 11:00:55 2023
+Created on Tue Nov 28 09:18:58 2023
 
-@author: jmd01
+@author: anjo1309
 """
+
 
 
 from MyLearners import Learner,RWLearner
@@ -100,7 +101,7 @@ Learner.ID = 0
 
 # Set the parameters controlling reinforcement learning
 Learner.alpha = 0.1
-Learner.beta = 1.
+Learner.beta = 1.9
 Learner.positive_reinforcement = 25.
 Learner.negative_reinforcement = -10.
 
@@ -108,7 +109,7 @@ RWLearner.initial_value_border = 1.
 RWLearner.initial_value_chunking = -1.
 
 RWLearner.alpha = 0.1
-RWLearner.beta = 1.
+RWLearner.beta = 1.9
 RWLearner.positive_reinforcement = 25.
 RWLearner.negative_reinforcement = -10.
 
@@ -294,8 +295,7 @@ cfgYP = ProbabilisticGrammar(terminalsYP, non_terminalsYP, production_rulesYP,we
 #############################################################
 
 
-n_trials =5000
-n_test = 100
+n_trials = 5000
 
 #############################################################
 #
@@ -306,7 +306,6 @@ print('Creating the stimuli stream')
 
 # Create stimuli stream
 stimuli_stream = Raw_input(3*n_trials,cfgNVN)
-test_stimuli_stream = Raw_input(2*n_test,cfgNVN)
 
 #############################################################
 #
@@ -315,28 +314,23 @@ test_stimuli_stream = Raw_input(2*n_test,cfgNVN)
 #############################################################
 
 print('Running the model')
-snaptid = [300,600,900,2000,4000]
-#snaptid = [100]
 
 print('Q-learning, continuous')
 learner = Learner(n_trials = n_trials, border = 'cont')
-learner.learn_with_snapshot(stimuli_stream,test_stimuli_stream,n_test, 'QLearnerC2.xlsx', snaptid, 5)
-
-
+learner.learn_with_snapshot(stimuli_stream, 'QLearnerC.xlsx', [1000,2000,3000,4000], 5)
 
 print('Q-learning, next sentence')
 learner = Learner(n_trials = n_trials, border = 'next')
-learner.learn_with_snapshot(stimuli_stream,test_stimuli_stream,n_test, 'QLearnerN2.xlsx', snaptid, 5)
-
+learner.learn_with_snapshot(stimuli_stream, 'QLearnerN.xlsx', [1000,2000,3000,4000], 5)
 
 print('RW Q-learning, continuous')
 learner = RWLearner(n_trials = n_trials, border = 'cont')
-learner.learn_with_snapshot(stimuli_stream,test_stimuli_stream,n_test, 'RWQLearnerC2.xlsx', snaptid, 5)
-
+learner.learn_with_snapshot(stimuli_stream, 'RWQLearnerC.xlsx', [1000,2000,3000,4000], 5)
 
 print('RW Q-learning, next sentence')
 learner = RWLearner(n_trials = n_trials, border = 'next')
-learner.learn_with_snapshot(stimuli_stream,test_stimuli_stream,n_test, 'RWQLearnerN2.xlsx', snaptid, 5)
+learner.learn_with_snapshot(stimuli_stream, 'RWQLearnerN.xlsx', [1000,2000,3000,4000], 5)
+
 
 
 end_time = datetime.now()
